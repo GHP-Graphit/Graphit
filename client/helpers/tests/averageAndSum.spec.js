@@ -1,7 +1,7 @@
 const chai = require('chai')
 const expect = chai.expect
 
-const {average, sum} = require('../averageAndSum')
+const {average, sum} = require('../findAvgfindSum')
 
 let labels = ['NY', 'NY', 'NY', 'CT', 'CT', 'CT', 'OH']
 let labels2 = ['NC', 'NY', 'OH', 'KY', 'NJ', 'CT', 'MA']

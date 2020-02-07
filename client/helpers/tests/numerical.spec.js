@@ -1,4 +1,4 @@
-const {isNumerical} = require('../numerical')
+const {isNumerical} = require('../isNumerical')
 
 const numData = [100, 4, 6, -100, 9, 2, 0.2]
 const strData = ['Steven', 'Ryan', 'Laura']

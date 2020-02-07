@@ -1,4 +1,4 @@
-const {isContinuous} = require('../continuous')
+const {isContinuous} = require('../isContinuous')
 
 const data = [1, 4, 6, -100, 9, 2, 0.2]
 
