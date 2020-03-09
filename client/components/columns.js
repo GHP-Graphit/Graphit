@@ -1,6 +1,7 @@
 import React, {Fragment} from 'react'
 import {connect} from 'react-redux'
 import {gotUploadedFile, gotUserOptions} from '../store/upload'
+import {clearGraph} from '../store/graph'
 import {
   Grid,
   Select,
@@ -83,6 +84,7 @@ class Columns extends React.Component {
 
   clearUploadedFile = () => {
     this.props.uploadFile(null)
+    this.props.clearGraph(null)
   }
 
   displayOutput = () => {
@@ -96,6 +98,7 @@ class Columns extends React.Component {
   render() {
     return (
       <Fragment>
+        {this.props.output.length > 0 && this.displayOutput()}
         <Paper className="paper-container" elevation={3}>
           <Grid
             container
@@ -164,7 +167,6 @@ class Columns extends React.Component {
             </Grid>
           </Grid>
         </Paper>
-        {this.props.output.length > 0 && this.displayOutput()}
       </Fragment>
     )
   }
@@ -177,6 +179,7 @@ const mapState = state => ({
 
 const mapDispatch = dispatch => ({
   uploadFile: file => dispatch(gotUploadedFile(file)),
+  clearGraph: () => dispatch(clearGraph()),
   setUserOptions: options => dispatch(gotUserOptions(options))
 })
 

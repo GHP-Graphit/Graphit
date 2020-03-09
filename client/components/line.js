@@ -1,36 +1,11 @@
 import React from 'react'
 import {Line} from 'react-chartjs-2'
 import {connect} from 'react-redux'
-import html2canvas from 'html2canvas'
-const pdfConverter = require('jspdf')
-import SaveGraph from './save-graph'
-import {Link} from 'react-router-dom'
-import SaveButtons from './saveButtons'
+import DownloadButton from './downloadButton'
 
 export class LineChart extends React.Component {
   constructor() {
     super()
-    this.state = {
-      savedGraph: false
-    }
-  }
-
-  saveAsPDF() {
-    let input = window.document.getElementsByClassName('divToPDF')[0]
-    html2canvas(input)
-      .then(canvas => {
-        const imgData = canvas.toDataURL('image/png')
-        const pdf = new pdfConverter('l', 'pt')
-        pdf.addImage(imgData, 'JPEG', 15, 110, 800, 250)
-        pdf.save('test.pdf')
-      })
-      .catch(err => console.log(err.message))
-  }
-
-  saveGraph() {
-    this.setState({
-      savedGraph: true
-    })
   }
 
   render() {
@@ -48,8 +23,8 @@ export class LineChart extends React.Component {
       title = this.props.graph.name
     }
     return (
-      <div>
-        <div className="divToPDF">
+      <div className={this.props.fullscreen && 'fullscreen'}>
+        <div className={this.props.fullscreen ? 'graph printPDF' : 'graph'}>
           <h2>{title}</h2>
           <Line
             data={{
@@ -79,18 +54,7 @@ export class LineChart extends React.Component {
             }}
           />
         </div>
-        <div className="saveButtons">
-          <SaveButtons saveAsPDF={this.saveAsPDF} saveGraph={this.saveGraph} />
-          {this.state.savedGraph === true ? (
-            <SaveGraph
-              type={this.props.graphtype}
-              columnData={this.props.graph.data}
-              columns={this.props.graph.columns}
-            />
-          ) : (
-            <div />
-          )}
-        </div>
+        {this.props.fullscreen && <DownloadButton />}
       </div>
     )
   }

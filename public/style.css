@@ -97,12 +97,6 @@ h3 {
 
 /* graph output */
 
-.carousel {
-  margin-bottom: 24px;
-}
-.chosenGraph {
-  flex-basis: 90%;
-}
 .carouselButton {
   font-size: 34px;
   color: #0a044a;
@@ -111,6 +105,28 @@ h3 {
 .carouselButton:disabled {
   color: lightgray;
   border: none;
+}
+
+.graph {
+  margin-bottom: 24px;
+}
+
+.graph h2 {
+  text-align: center; /* center graph title */
+}
+
+.saveButtons {
+  margin-top: 24px;
+}
+
+/* single graph */
+.modal {
+  overflow: scroll;
+}
+
+.modal .fullscreen {
+  background-color: white;
+  margin: 0 5%;
 }
 
 .page {
@@ -156,9 +172,6 @@ h3 {
 }
 .graph-name {
   align-self: center;
-}
-.saveButtons {
-  margin-top: 24px;
 }
 
 /* form */
